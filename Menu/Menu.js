@@ -34,49 +34,26 @@ let menuItems = [
   
 */
 
-  const header = 
-document.querySelector('.header');
 
-//button
-
-  const menuButton = 
-document.querySelector('.menu-button');
-
-function createMenu (arr) {
-
-//elements
-
-    const menu = 
-  document.createElement('div');
-    const ul = 
-  document.createElement('ul');
-
-  menuItems.forEach( e => {
-    const list = document.createElement('li');
-    list.textContent = e;
-    list.appendChild(listItem);
-  });
-   
-//classes
-
-    menu.classList.add('menuItems');
-
-
-//structure
-
-    menu.appendChild(ul);
-
-//button
-
-
-menuButton.addEventListener('click', event => {
-  console.log('menu clicked');
+const header = document.querySelector('.header');
+const menuBtn = document.querySelector('.menu-button');
+function createMenu (menuItems){
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+  menuItems.forEach(items => {
+    const listItems = document.createElement('li');
+    list.appendChild(listItems);
+    listItems.textContent = items;
+  })
+  menu.appendChild(list);
+  
+  menu.classList.add('menu');
+menuBtn.addEventListener('click', e => {
   menu.classList.toggle('menu--open');
+  console.log('menu clicked');
+  
 })
 
-header.appendChild(menu);
-console.log(menu)
-    return menu
+return menu;
 }
-
-
+header.appendChild(createMenu(menuItems))
