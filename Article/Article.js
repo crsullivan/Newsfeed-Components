@@ -85,6 +85,46 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Out-Schooling Four-Year Universities since 2016',
+    date: 'Aug 5th, 2019',
+    firstParagraph: `Totally a great idea, make the university itself accountable for the product they release into the workforce instead of just 
+    churning out degrees and money, for you know, the sheer sake of degrees and money `,
+
+    secondParagraph: `Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda 
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda`,
+
+    thirdParagraph: `FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW.`
+  },
+  {
+    title: 'MonsterCat to Meet All Lambda Students From WEB23',
+    date: 'Sept 1st, 2019',
+    firstParagraph: `Musical Group MonsterCat, thrilled by the innovative practices at Lambda School, wants to meet every current WEB23 student, their TLs, Sls and all staff members!! `,
+
+    secondParagraph: `Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda 
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda`,
+
+    thirdParagraph: `FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW.`
+  },
+  {
+    title: 'Lambda School TLs nominated for joint presidency in 2020',
+    date: 'Sept 4th, 2019',
+    firstParagraph: `Lambda School has successfully, once again, done the impossible, nominating every single one of the school's TLs for a joint presidency council in 2020`,
+
+    secondParagraph: `Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda 
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda
+    Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda Lambda`,
+
+    thirdParagraph: `FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW
+    FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW FTW.`
   }
 ];
 
@@ -112,3 +152,62 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const articles = 
+document.querySelector('.articles');
+
+data.forEach(info => {
+  articles.appendChild(createArticle (info.title, info.date, info.firstParagraph, info.secondParagraph, info.thirdParagraph))
+})
+
+function createArticle (title, date, firstParagraph, secondParagraph, thirdParagraph) {
+    
+  //elements
+  
+    const article = 
+  document.createElement('div');
+    const h2 =
+  document.createElement('h2');
+    const  p = 
+  document.createElement('p');
+    const p1 = 
+  document.createElement('p');
+    const p2 = 
+  document.createElement('p');
+    const p3 = 
+  document.createElement('p');
+    const btn = 
+  document.createElement('span');
+
+//classes
+
+    article.classList.add('article');
+    p.classList.add('date');
+    btn.classList.add('expandButton');
+
+//content
+
+    h2.textContent = title;
+    p1.textContent = firstParagraph;
+    p2.textContent = secondParagraph;
+    p3.textContent = thirdParagraph;
+    btn.textContent = 'Expand';
+
+//structure
+
+    article.appendChild(h2);
+    article.appendChild(p);
+    article.appendChild(p1);
+    article.appendChild(p2);
+    article.appendChild(p3);
+    article.appendChild(btn);
+
+//button
+  
+    btn.addEventListener('click', event => {
+      console.log("button clicked");
+      article.classList.toggle('article-open');
+    })
+
+    return article;
+}
+
